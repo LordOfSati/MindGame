@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8A25CD824B3D9DA003509C2 /* EmojiMindGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A25CD724B3D9DA003509C2 /* EmojiMindGame.swift */; };
+		B8A25CDA24B3DA62003509C2 /* MindGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A25CD924B3DA62003509C2 /* MindGame.swift */; };
 		B8FACCF724B29C2000E981FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FACCF624B29C2000E981FA /* AppDelegate.swift */; };
 		B8FACCF924B29C2000E981FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FACCF824B29C2000E981FA /* SceneDelegate.swift */; };
 		B8FACCFB24B29C2000E981FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FACCFA24B29C2000E981FA /* ContentView.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8A25CD724B3D9DA003509C2 /* EmojiMindGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMindGame.swift; sourceTree = "<group>"; };
+		B8A25CD924B3DA62003509C2 /* MindGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindGame.swift; sourceTree = "<group>"; };
 		B8FACCF324B29C2000E981FA /* MindGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FACCF624B29C2000E981FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8FACCF824B29C2000E981FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				B8FACD0124B29C2200E981FA /* LaunchScreen.storyboard */,
 				B8FACD0424B29C2200E981FA /* Info.plist */,
 				B8FACCFE24B29C2200E981FA /* Preview Content */,
+				B8A25CD724B3D9DA003509C2 /* EmojiMindGame.swift */,
+				B8A25CD924B3DA62003509C2 /* MindGame.swift */,
 			);
 			path = MindGame;
 			sourceTree = "<group>";
@@ -148,6 +154,8 @@
 			files = (
 				B8FACCF724B29C2000E981FA /* AppDelegate.swift in Sources */,
 				B8FACCF924B29C2000E981FA /* SceneDelegate.swift in Sources */,
+				B8A25CD824B3D9DA003509C2 /* EmojiMindGame.swift in Sources */,
+				B8A25CDA24B3DA62003509C2 /* MindGame.swift in Sources */,
 				B8FACCFB24B29C2000E981FA /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
