@@ -8,8 +8,9 @@
 
 import Foundation
 
-class EmojiMindGame {
+class EmojiMindGame: ObservableObject {
     
+    @Published
     private var mindGame: MindGame<String> = createEmojiMindGame()
     
     static func createEmojiMindGame() -> MindGame<String> {

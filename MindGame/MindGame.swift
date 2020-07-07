@@ -21,8 +21,16 @@ struct MindGame<CardType> {
         }
     }
     
-    func choose(card: Card) {
+    mutating func choose(card: Card) {
         print("Tapped on \(card)")
+        let cardIndex = self.index(of: card)
+        if let cardIndex = cardIndex {
+            self.cards[cardIndex].isFaceUp = !self.cards[cardIndex].isFaceUp
+        }
+    }
+    
+    func index(of card: Card) -> Int? {
+        return self.cards.firstIndex { c in c.id == card.id }
     }
     
     struct Card : Identifiable {
