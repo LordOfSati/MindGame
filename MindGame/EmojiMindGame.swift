@@ -14,7 +14,7 @@ class EmojiMindGame: ObservableObject {
     private var mindGame: MindGame<String> = createEmojiMindGame()
     
     static func createEmojiMindGame() -> MindGame<String> {
-        let emojis = ["🤪", "😳"]
+        let emojis = ["🤪", "😳", "🤡", "👻"]
         return MindGame<String>(noOfPairs: emojis.count) { index in
             return emojis[index]
         }
@@ -22,7 +22,7 @@ class EmojiMindGame: ObservableObject {
     
     // MARK: Accessors
     
-    var cards: Array<MindGame<String>.Card> {
+    var cards: [MindGame<String>.Card] {
         mindGame.cards
     }
     

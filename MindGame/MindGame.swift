@@ -8,12 +8,21 @@
 
 import Foundation
 
-struct MindGame<CardType> {
+struct MindGame<CardType> where CardType: Equatable {
     
-    var cards: Array<Card>
+    var cards: [Card]
+    
+    var firstSelectedCardIndex: Int? {
+        get { cards.indices.filter { cards[$0].isFaceUp }.only }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = index == newValue
+            }
+        }
+    }
     
     init(noOfPairs: Int, contentGenerator: (Int) -> CardType) {
-        cards = Array<Card>()
+        cards = [Card]()
         for index in 0..<noOfPairs {
             let content = contentGenerator(index)
             cards.append(Card(content: content, id: index * 2))
@@ -22,19 +31,22 @@ struct MindGame<CardType> {
     }
     
     mutating func choose(card: Card) {
-        print("Tapped on \(card)")
-        let cardIndex = self.index(of: card)
-        if let cardIndex = cardIndex {
-            self.cards[cardIndex].isFaceUp = !self.cards[cardIndex].isFaceUp
+        let chosenIndex = self.cards.firstIndex { $0.id == card.id }!
+        if !cards[chosenIndex].isFaceUp && !cards[chosenIndex].isMatched {
+            if let potentialMatchedIndex = firstSelectedCardIndex {
+                if cards[chosenIndex].content == cards[potentialMatchedIndex].content {
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchedIndex].isMatched = true
+                }
+                self.cards[chosenIndex].isFaceUp = true
+            } else {
+                firstSelectedCardIndex = chosenIndex
+            }
         }
     }
     
-    func index(of card: Card) -> Int? {
-        return self.cards.firstIndex { c in c.id == card.id }
-    }
-    
     struct Card : Identifiable {
-        var isFaceUp = true
+        var isFaceUp = false
         var isMatched = false
         var content: CardType
         var id: Int
