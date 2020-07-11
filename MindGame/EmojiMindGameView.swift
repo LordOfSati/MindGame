@@ -18,7 +18,7 @@ struct EmojiMindGameView: View {
             CardView(card: card).onTapGesture {
                 self.mindGame.choose(card: card)
             }
-            .padding()
+            .padding(5)
         }
         .padding()
         .foregroundColor(Color.orange)
@@ -26,39 +26,37 @@ struct EmojiMindGameView: View {
 }
 
 struct CardView: View {
-    var card : MindGame<String>.Card
+    var card : MindGameModel<String>.Card
     var body: some View {
         GeometryReader { geometry in
             self.body(for: geometry.size)
         }
     }
     
-    func body(for size: CGSize) -> some View {
-        return ZStack {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: cardBorderWidth)
-                RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
-                Text(card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
+    @ViewBuilder
+    private func body(for size: CGSize) -> some View {
+        if card.isFaceUp || !card.isMatched {
+            ZStack {
+                Pie(startAngle: Angle.degrees(0 - 90),
+                    endAngle: Angle.degrees(110 - 90),
+                    clockwise: true).padding(5).opacity(0.5)
+                Text(card.content).font(Font.system(size: fontSize(for: size)))
             }
+            .cardify(isFaceUp: card.isFaceUp)
         }
-        .font(Font.system(size: fontSize(for: size)))
     }
     
-    func fontSize(for size: CGSize) -> CGFloat {
+    private func fontSize(for size: CGSize) -> CGFloat {
         return min(size.height, size.width) * fontScaleFactor
     }
     
-    let fontScaleFactor: CGFloat = 0.75
-    let cornerRadius: CGFloat = 10.0
-    let cardBorderWidth: CGFloat = 3
+    private let fontScaleFactor: CGFloat = 0.70
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiMindGameView(mindGame: EmojiMindGame())
+        let game = EmojiMindGame()
+        game.choose(card: game.cards.first!)
+        return EmojiMindGameView(mindGame: game)
     }
 }

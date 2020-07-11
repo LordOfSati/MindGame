@@ -1,5 +1,5 @@
 //
-//  MemoryGame.swift
+//  MindGameModel.swift
 //  MindGame
 //
 //  Created by Sathish Kumar on 06/07/2020.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct MindGame<CardType> where CardType: Equatable {
+struct MindGameModel<CardType> where CardType: Equatable {
     
-    var cards: [Card]
+    private(set) var cards: [Card]
     
-    var firstSelectedCardIndex: Int? {
+    private var firstSelectedCardIndex: Int? {
         get { cards.indices.filter { cards[$0].isFaceUp }.only }
         set {
             for index in cards.indices {

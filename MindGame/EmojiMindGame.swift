@@ -11,24 +11,24 @@ import Foundation
 class EmojiMindGame: ObservableObject {
     
     @Published
-    private var mindGame: MindGame<String> = createEmojiMindGame()
+    private var mindGame: MindGameModel<String> = createEmojiMindGame()
     
-    static func createEmojiMindGame() -> MindGame<String> {
-        let emojis = ["🤪", "😳", "🤡", "👻"]
-        return MindGame<String>(noOfPairs: emojis.count) { index in
+    private static func createEmojiMindGame() -> MindGameModel<String> {
+        let emojis = ["🤪", "😳", "🤡", "👻", "🤖"]
+        return MindGameModel<String>(noOfPairs: emojis.count) { index in
             return emojis[index]
         }
     }
     
     // MARK: Accessors
     
-    var cards: [MindGame<String>.Card] {
+    var cards: [MindGameModel<String>.Card] {
         mindGame.cards
     }
     
     // MARK: Actions
     
-    func choose(card: MindGame<String>.Card) {
+    func choose(card: MindGameModel<String>.Card) {
         mindGame.choose(card: card)
     }
 }
